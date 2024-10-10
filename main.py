@@ -69,6 +69,7 @@ def handle_inactivos(message):
     if message.chat.type != 'private':
         bot.reply_to(message, "Este comando solo puede ser usado en privado.")
         return
+        return
 
     if es_admin(message.from_user.id):
         # Ordenar por tiempo de inactividad (diferencia entre la fecha actual y la última actividad)
@@ -235,11 +236,12 @@ def handle_text(message):
 def welcome_new_members(message):
     for member in message.new_chat_members:
         agregar_o_actualizar_usuario(member.id, member.first_name)
-        #bot.send_message(message.chat.id, f"¡Hola {member.first_name}! ¡Bienvenido al grupo!")
+        bot.send_message(message.chat.id, f"¡Hola {member.first_name}! ¡Bienvenido al grupo!")
 
 @bot.message_handler(content_types=['left_chat_member'])
 def goodbye_member(message):
     eliminar_usuario(message.left_chat_member.id)
+
 
 
 if __name__ == "__main__":
