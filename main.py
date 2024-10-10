@@ -13,14 +13,14 @@ chat_id = -1002269439255  # Cambia por tu chat ID si es necesario
 def cargar_datos():
     global usuarios
     try:
-        with open('usuarios.json', 'r') as f:
+        with open('./usuarios.json', 'r') as f:
             usuarios = json.load(f)
     except FileNotFoundError:
         usuarios = {}
 
 # Guardar datos de usuarios en archivos JSON
 def guardar_datos():
-    with open('usuarios.json', 'w') as f:
+    with open('./usuarios.json', 'w') as f:
         json.dump(usuarios, f, indent=4)
 
 def agregar_o_actualizar_usuario(usuario_id, nombre):
